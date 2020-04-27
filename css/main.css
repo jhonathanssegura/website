@@ -21,7 +21,7 @@ p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldse
 
 /* TYPOGRAPHY */
 /* Composed to a scale of 12px, 14px, 16px, 18px, 21px, 24px, 36px, 48px, 60px and 72px */
-h1, h2, h3, h4, h5, h6 {font-family:'Open Sans', sans-serif;color:#444;}
+h1, h2, h3, h4, h5, h6 {font-family:'Open Sans', sans-serif;color:whitesmoke;}
 h1 {margin: 0; font-size: 3.75em; line-height: 1.2em; margin-bottom: 0.4em} /* 60px / 72px */
 h2 {margin: 0; font-size: 3em; line-height: 1em; margin-bottom: 0.5em} /* 48px / 48px */
 h3 {margin: 0; font-size: 2.25em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 0.6667em} /* 36px / 48px */ 
@@ -91,8 +91,8 @@ ins, mark {text-decoration: none}
 mark {background: #c47529}
 ins {background: #d49855}
 del {text-decoration: line-through}
-::-moz-selection {background: #E74C3C; color: #fff; text-shadow: none} /* selected text */
-::selection {background: #E74C3C; color: #fff; text-shadow: none} /* selected text */
+::-moz-selection {background: #E74C3C; color: #062F4F;; text-shadow: none} /* selected text */
+::selection {background: #E74C3C; color: #062F4F;; text-shadow: none} /* selected text */
 
 /* OTHERS */
 strong, b, dt { font-weight: bold}
@@ -193,9 +193,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 }
 #tab-data-wrap{
   padding: 30px 20px;
-  background: #fff;
-  border: 1px solid #f1f1f1;
-  box-shadow: 0px 6px #c0392b;
+  background: #062F4F;
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -204,8 +202,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
   display: inline-block;
   zoom: 1;
   *display: inline;
-  background: #fff;
-  border: solid 1px #f1f1f1;
+  background: #062F4F;
   border-bottom: 0px;
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -228,16 +225,15 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 }
 
 .tab.active {
-  background: #fff;
+  background: #062F4F;;
   position: relative;
   top: 1px;
-  border-color: #f1f1f1;
   border-bottom: none;
 }
 
 .tab a.active {
   padding-top: 10px;
-  color: #e74c3c;
+  color: #FFFFFF;
 }
 .tab a i{
   font-size: 16px;
@@ -248,22 +244,16 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 .info-wrap{
 
 }
-/* Photo */
+
 .photo{
-  float: left;
-  height: 200px;
-  width: 200px;
-  margin-right: 20px;
-  overflow: hidden;
-}
-.photo img{
- -webkit-border-radius: 4px;
- -moz-border-radius: 4px;
- border-radius: 4px;
- width: 100%;
+ width: 80%;
+ height: 80%;
+ margin-left: 10%;
+ margin-right: 10%;
+ margin-top: 8%;
 }
 .info{
-
+  margin-top: 2%;
 }
 .info h2, #header h2{
   text-transform: uppercase;

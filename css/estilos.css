@@ -37,7 +37,7 @@ body {
 
 .contenedor.header {
     height: calc(100vh - 55px);
-    border: 3px solid #555555;
+    border: 3px solid #FFFFFF;
 }
 
 .barra-navegacion ul {
