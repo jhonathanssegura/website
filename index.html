@@ -9,6 +9,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.min.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/estilos.css">    
   <style>
       .text-center { text-align: center; }
   </style>
@@ -18,8 +19,11 @@
   <script src="js/vendor/jquery.easytabs.min.js"></script>
   <script src="js/main.js"></script>
 </head>
-<body class="bg-fixed bg-1">
-<div class="main-container">
+<body class="bg-fixed bg-1" style="color: gray">
+<!-- ID Particles.js -->
+<div id="particles-js"></div>
+
+<div class="main-container" style="color: gray">
     <div class="main wrapper clearfix">
       <!-- Header Start -->
         <header id="header">
@@ -37,7 +41,7 @@
         <!-- Header End -->
         <!-- Main Tab Container -->
         <div id="tab-container" class="tab-container">
-          <!-- Tab List -->
+            <!-- Tab List -->
             <ul class='etabs'>
                 <li class='tab' id="tab-about">
                   <a href="#about"><i class="icon-user"></i><span>Sobre mi</span></a>
@@ -52,9 +56,9 @@
                   <a href="#contact"><i class="icon-envelope"></i><span>Contacto</span></a>
                 </li>
             </ul>
-          <!-- End Tab List -->
+            <!-- End Tab List -->
             <div id="tab-data-wrap">
-              <!-- About Tab Data -->
+                <!-- About Tab Data -->
                 <div id="about">
                     <section class="clearfix">
                         <div class="g2">
@@ -324,6 +328,10 @@
             </p>
         </footer>
     </div>
+
+    <!-- JS Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/app.js"></script>
 </div>
 </body>
 </html>
