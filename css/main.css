@@ -69,14 +69,13 @@ dt {font-family:Futura, "Century Gothic", AppleGothic, sans-serif}
 /* HYPERLINKS */
 a { 
   text-decoration: none;
-  color: #E74C3C;
   -webkit-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
   -moz-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
   -ms-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
   -o-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
   transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 }
-a:hover, a:focus, a:active { text-decoration: none; border: none;color: #C0392B }
+a:hover, a:focus, a:active { text-decoration: none; border: none;}
 /* MEDIA */
 figure {margin: 0}
 img, object, embed, video {max-width: 100%; _width: 100%} /* Fluid images */
@@ -91,8 +90,6 @@ ins, mark {text-decoration: none}
 mark {background: #c47529}
 ins {background: #d49855}
 del {text-decoration: line-through}
-::-moz-selection {background: #E74C3C; color: #062F4F;; text-shadow: none} /* selected text */
-::selection {background: #E74C3C; color: #062F4F;; text-shadow: none} /* selected text */
 
 /* OTHERS */
 strong, b, dt { font-weight: bold}
@@ -300,7 +297,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 
 .item-box{
   padding: 6px 6px 6px 10px;
-  border: 1px solid #f1f1f1;
+  
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
