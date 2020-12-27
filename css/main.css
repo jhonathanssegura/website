@@ -190,7 +190,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 }
 #tab-data-wrap{
   padding: 30px 20px;
-  background: #062F4F;
+  background: #000;
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -199,7 +199,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
   display: inline-block;
   zoom: 1;
   *display: inline;
-  background: #062F4F;
+  background: #000;
   border-bottom: 0px;
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -222,7 +222,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 }
 
 .tab.active {
-  background: #062F4F;;
+  background: #000;;
   position: relative;
   top: 1px;
   border-bottom: none;
