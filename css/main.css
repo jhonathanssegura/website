@@ -326,7 +326,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 
 /* WorkExperience */
 .work li{
-  border-bottom: 1px solid #f1f1f1;
+  /*border-bottom: 1px solid #f1f1f1;*/
   margin-bottom: 2em;
 }
 .work li span{
@@ -653,7 +653,6 @@ Change widths as necessary
   /* Sidebar */
   .sidebar{
    padding-left: 20px;
-   border-left: 1px solid #f1f1f1;
  }
  /* COLUMN GRID */
  .g1,.g2,.g3 {display:inline; float: left}
@@ -732,4 +731,11 @@ padding: 9px;
 {
   color: #fff;
   border-bottom: 1px dashed;
+}
+
+.imgRedonda {
+  width:220px;
+  height:220px;
+  border-radius:80px;
+  border:5px solid #666;
 }
