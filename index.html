@@ -11,7 +11,8 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/estilos.css">    
+    <link rel="stylesheet" href="css/estilos.css"> 
+    <link rel="stylesheet" href="css/form.css">    
     <style>
         .text-center { text-align: center; }
     </style>
@@ -440,27 +441,21 @@
                 <div id="contact">
                     <section class="clearfix">
                         <div style="text-align: center">
-                            <h3 style="text-align: center;">IN CONSTRUCTION</h3>
+                            <h4 style="text-align: center; color:gray">Send me your </br>job offers or proposals</h4>
                         </div>
                         <form name="contact" method="POST" data-netlify="true">
                             <p>
-                              <label>Your Name: <input type="text" name="name" /></label>   
+                              <label class="form-text">Your Name: </br><input type="text" class="field" name="name" /></label>   
                             </p>
                             <p>
-                              <label>Your Email: <input type="email" name="email" /></label>
+                              <label>Your Email: </br><input type="email" class="field" name="email" /></label>
                             </p>
                             <p>
-                              <label>Your Role: <select name="role[]" multiple>
-                                <option value="leader">Leader</option>
-                                <option value="follower">Follower</option>
-                              </select></label>
-                            </p>
-                            <p>
-                              <label>Message: <textarea name="message"></textarea></label>
+                              <label>Message: </br><textarea class="field" name="message"></textarea></label>
                             </p>
                             <div data-netlify-recaptcha="true"></div>
-                            <p>
-                              <button type="submit">Send</button>
+                            <p class="center-content">
+                              <button type="submit" class="form-button">Send</button>
                             </p>
                         </form>
                     </section>
