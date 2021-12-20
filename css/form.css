@@ -54,3 +54,7 @@ textarea {
     outline: none;
     width: 50px;
 }
+
+.form-recaptcha {
+    align-items: center;
+}
