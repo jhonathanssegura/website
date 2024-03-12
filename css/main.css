@@ -739,3 +739,7 @@ padding: 9px;
   border-radius:80px;
   border:5px solid #666;
 }
+
+.justify {
+  text-align: justify;
+}
