@@ -1,468 +1,96 @@
 <!DOCTYPE html>
 <html class="no-js">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Portafolio - Jhonathan</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/estilos.css"> 
-    <link rel="stylesheet" href="css/form.css">    
-    <style>
-        .text-center { text-align: center; }
-    </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="js/vendor/jquery.hashchange.min.js"></script>
-    <script src="js/vendor/jquery.easytabs.min.js"></script>
-    <script src="js/main.js"></script>
-</head>
-<body class="bg-fixed bg-1" style="color: whitesmoke">
-<!-- ID Particles.js -->
-<div id="particles-js"></div>
-
-<div class="main-container" style="color: whitesmoke">
-    <div class="main wrapper clearfix">
-      <!-- Header Start -->
-        <header id="header">
-            <div id="logo">
-                <h3>
-                    Jhonathan Salas
-                </h3>
-                <h4>
-                    Software Engineer | Data Engineer
-                </h4>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Portafolio - Jhonathan</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/estilos.css"> 
+        <link rel="stylesheet" href="css/form.css">    
+        <style>
+            .text-center { text-align: center; }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery.hashchange.min.js"></script>
+        <script src="js/vendor/jquery.easytabs.min.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body class="bg-fixed bg-1" style="color: whitesmoke">
+        <div id="particles-js"></div>
+        <div class="main-container" style="color: whitesmoke">
+            <div class="main wrapper clearfix">
+                <!-- Header Start -->
+                <header id="header">
+                    <div id="logo">
+                        <h3>
+                            Jhonathan Salas
+                        </h3>
+                        <h4>
+                            Software Engineer | Data Engineer
+                        </h4>
+                    </div>
+                </header>
+                <!-- Header End -->
+                <!-- Main Tab Container -->
+                <div id="tab-container" class="tab-container">
+                    <!-- Tab List -->
+                    <ul class='etabs'>
+                        <li class='tab' id="tab-about">
+                        <a href="#about"><i class="icon-user"></i><span>About Me</span></a>
+                        </li>
+                        <li class='tab'>
+                        <a href="#resume"><i class="icon-file-text"></i><span>Resume</span></a>
+                        </li>
+                        <li class='tab'>
+                        <a href="#portfolio"><i class="icon-heart"></i><span>Portfolio</span></a>
+                        </li>
+                        <li class='tab'>
+                        <a href="#contact"><i class="icon-envelope"></i><span>Contact</span></a>
+                        </li>
+                    </ul>
+                    <!-- End Tab List -->
+                    <div id="tab-data-wrap">
+                        <!-- About Tab Data -->
+                        <div id="about"></div>
+                        <!-- Resume Tab Data -->
+                        <div id="resume"></div>
+                        <!-- Portfolio Tab Data -->
+                        <div id="portfolio"></div>
+                        <!-- Social Tab Data -->
+                        <div id="contact"></div>
+                    </div>
+                </div>
+                <!-- End Tab Container -->
+                <footer><p>© Jhonathan Salas | 2024</p></footer>
             </div>
-        </header>
-        <!-- Header End -->
-        <!-- Main Tab Container -->
-        <div id="tab-container" class="tab-container">
-            <!-- Tab List -->
-            <ul class='etabs'>
-                <li class='tab' id="tab-about">
-                  <a href="#about"><i class="icon-user"></i><span>About Me</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#resume"><i class="icon-file-text"></i><span>Resume</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#portfolio"><i class="icon-heart"></i><span>Portfolio</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#contact"><i class="icon-envelope"></i><span>Contact</span></a>
-                </li>
-            </ul>
-            <!-- End Tab List -->
-            <div id="tab-data-wrap">
-                <!-- About Tab Data -->
-                <div id="about">
-                    <section class="clearfix">
-                        <div class="g1">
-                            <div class="photo text-center">
-                                <img class="img-fluid mb-5 d-block mx-auto imgRedonda" src="images/yo.jpg" alt="MyFace" >
-                            </div>
-                        </div>
-                        <div class="g2">
-                            <div class="info text-center">
-                                <h3>
-                                    Jhonathan Salas
-                                </h3>
-                                <h4>
-                                    Software Engineer | Data Engineer
-                                </h4>
-                                <p class="justify">I’m a technical professional with 6 years of experience as a backend software developer, I’m excited to learn about the latest technologies to reinvent, build, optimize, integrate and automate solutions. My experience has focused mainly on sectors related to retail, ecommerce and banking.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- End About Tab Data -->
-                <!-- Resume Tab Data -->
-                <div id="resume">
-                    <section class="clearfix">
-                        <div class="g2">
-                            <h4 class="info text-center" style="color:gray">
-                                Work Experience
-                            </h4>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Globant</h5>
-                                    <p style="color:gray"><strong>Go Developer</strong><span class="label label-info">Jan 2022 - Present</span></p>
-                                    <p class="justify">Development of REST APIs implementing microservices-oriented architecture, REST APIs for communication with SOAP components. Development of producers, consumers and topics to send notifications in Kafka. Writing technical, component and RFC documentation. Migration of old components to REST API. Product performance testing using Jmeter.</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> Golang, Go-kit, Gowsdl, Kafka, Kubernetes, Docker, Rancher, ArgoCD, JMeter, OAS, AsyncAPI.</p>
-                                </li>
-                            </ul>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>RPA Latam</h5>
-                                    <p style="color:gray"><strong>Python Backend</strong><span class="label label-success">Sep 2021 - Dic 2021</span></p>
-                                    <p class="justify">Research and development on Chatbots for WhatsApp using the Venom framework for JS, best practices along with their use cases. REST API development with NodeJS and Express. Configuration and deployment of environments from scratch On Premise using Nginx along with implementation of Logs with PM2. Product performance testing using JMeter.</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> JavaScript, ExpressJS, NodeJS, VenomJS, PM2, RabbitMQ, Nginx, JMeter.</p>
-                                </li>
-                            </ul>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Synopsis S.A</h5>
-                                    <p style="color:gray"><strong>Programmer Analyst</strong><span class="label label-success">May 2019 - Aug 2021</span></p>
-                                    <p class="justify">Migration of old components and development from scratch of REST API type monoliths/microservices in Express/NodeJS, Python and Golang. Requirement gathering and management to resolve productive incidents. Systems support along with optimization according to business needs. Development of scripts for process automation in Python and SQL.</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> JavaScript, Python, Golang, Django, DjangoREST, Gin, NodeJS, Airflow, Kafka, Kubernetes, Docker, Rancher, PostgreSQL, SQL Server, Triggers, Stored Procedures, Azure DevOps, OAS.</p>
-                                </li>
-                            </ul>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Maxima Internacional S.A</h5>
-                                    <p style="color:gray"><strong>Software Development</strong><span class="label label-success">Jun 2018 - Dec 2018</span></p>
-                                    <p class="justify">Optimization of the corporate website with dynamism and responsive design. Updated business information for a better search experience. Support and optimization of internal and external web systems. Resolution of incidents for Electronic Billing (SUNAT).</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> SQL Server, VB.NET, ASP.NET, JavaScript.</p>
-                                </li>
-                            </ul>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Fundación CENDITEL</h5>
-                                    <p style="color:gray"><strong>Development Analyst</strong><span class="label label-success">Sep 2017 - Abr 2018</span></p>
-                                    <p class="justify">Requirements and incidents management with development of REST APIs from scratch. Creation of new modules in CUMBOTO TDA and ROOT VE Projects using Django, DjangoREST and Booststrap. Cryptography and computer security terminology documentation for disclosure.</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> JavaScript, Python, Django, DjangoREST, PostgreSQL, Bootstrap.</p>
-                                    <p style="color:gray"><strong>Intership</strong><span class="label label-success">Jun 2017 - Sep 2017</span></p>
-                                    <p class="justify">Development of REST APIs from scratch. Creating new modules in the CUMBOTO TDA Project. Planning and development of the Interop project (TFG).</p>
-                                    <p class="justify"><strong>Tools/Technologies:</strong> Python, Django, DjangoREST, PostgreSQL.</p>
-                                </li>
-                            </ul>
-                            <h4 class="info text-center" style="color:gray">
-                                Education
-                            </h4>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Instituto Universitario de Tecnología Dr. Cristóbal Mendoza</h5>
-                                    <p>Higher University Technician in Informatics<span class="label label-success">Sep 2015 - Abr 2018</span></p>
-                                </li>
-                            </ul>
-                            <h4 class="info text-center" style="color:gray">
-                                Languages
-                            </h4>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>Asociación Cultural Peruano Británico</h5>
-                                    <p>Intermediate Phase Certification<span class="label label-success">Dec 2022</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="g1">
-                            <div class="sidebar">
-                                <h4 class="info text-center" style="color:gray">
-                                    Skills
-                                </h4>
-                                <h5 style="text-align: center;">
-                                    Software
-                                </h5>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Visual Studio Code</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">DBeaver</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Virtualbox</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Postman</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">JMeter</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Rancher</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Sourcetree</span>
-                                </div>
-                                <div class="break"></div>
-                                <h5 style="text-align: center;">
-                                    Languages
-                                </h5>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Golang | Advanced</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Python | Advanced</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Java | Intermediate</span>
-                                </div>
-                                <h5 style="text-align: center;">
-                                    Technologies
-                                </h5>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Go-Kit | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Gin | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Django | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">DjangoREST | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Micronaut | Basic</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Spring Boot | Basic</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Docker | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Kubernetes | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Apache Airflow | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Apache Kafka | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Apache Spark | Basic</span>
-                                </div>
-                                <h5 style="text-align: center;">
-                                    Databases
-                                </h5>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">PostgreSQL | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">MySQL | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">MongoDB | Intermediate</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Cassandra | Basic</span>
-                                </div>
-                                <div class="meter asbestos">
-                                    <span style="text-align: center; color: white">Redis | Basic</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- End Resume Tab Data -->
-                <!-- Portfolio Tab Data -->
-                <div id="portfolio">
-                    <section class="clearfix">
-                        <h3 style="text-align: center; color:gray">Projects</h3>
-                        <!-- Primera Fila -->
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Flows in <br/>Airflow</h5>
-                                <img src="images/proyecto-uno.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Platform test for the execution and monitoring of flows.</p>
-                                        <a href="https://github.com/jhonssegura/airflow-tutorial" class="btn btn-primary">See project.</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Space <br/>Exploration</h5>
-                                <img src="images/proyecto-tres.jpg" class="card-img-top" alt="ROOTVE">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Data Pipeline that will come from one of the SpaceX satellites.</p>
-                                        <a href="https://github.com/jhonasegura/airflow-space-exploration" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Kafka <br/>fundamentals</h5>
-                                <img src="images/proyecto-tres.jpg" class="card-img-top" alt="ROOTVE">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Shell</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Theoretical foundations of Kafka with docker-compose.</p>
-                                        <a href="https://github.com/jhonasegura/kafka-fundamentals" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br/>
-                        <!-- Segunda Fila -->
-                        <div class="g1">
-                            <br/>
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Blockchain <br/>with Python</h5>
-                                <img src="images/proyecto-cuatro.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Implementation of concepts on Blockchain using Python.</p>
-                                        <a href="https://github.com/jhonssegura/flask-simple-blockchain-application" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <br/>
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Interoperable Issuer System</h5>
-                                <img src="images/proyecto-cinco.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                            <span class="label label-info">HTML/CSS</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">System in charge of carrying out CRUD and issuing data.</p>
-                                        <a href="https://github.com/jhonssegura/django-sistema-emisor" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <br/>
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Interoperable Receiver System</h5>
-                                <img src="images/proyecto-seis.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                            <span class="label label-info">JavaScript</span>
-                                            <span class="label label-info">HTML/CSS</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">
-                                            System in charge of receiving data for viewing.</p>
-                                        <a href="https://github.com/jhonssegura/django-sistema-receptor" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Tercera Fila -->
-
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">Blockchain <br/>with Golang</h5>
-                                <img src="images/proyecto-nueve.png" class="card-img-top" alt="ROOTVE">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Golang</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Blockchain using Golang.</p>
-                                        <a href="https://github.com/jhonssegura/golang-api-blockchain" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">REST API <br/> with Golang</h5>
-                                <img src="images/proyecto-dos.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Golang</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Golang REST API using GORM/GIN.</p>
-                                        <a href="https://github.com/jhonssegura/golang-api-rest-hexagonal" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="card" style="width: 18rem;">
-                                <h5 style="text-align: center;">REST API <br/>with Python</h5>
-                                <img src="images/proyecto-tres.jpg" class="card-img-top" alt="Sistema Receptor">
-                                <div class="card-body">
-                                    <div class="col-md-4 text-center">
-                                        <p>
-                                            <span class="label label-info">Python</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <p class="card-text">Python REST API using Django/DjangoREST.</p>
-                                        <a href="https://github.com/jhonssegura/django-api-rest" class="btn btn-primary">See project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- End Portfolio Data -->
-                <!-- Social Tab Data -->
-                <div id="contact">
-                    <h4 style="text-align: center; color:gray">Follow me on</h4>
-                    <section class="clearfix">
-                        <div style="text-align: center;">
-                            <div style="display: inline-block; padding: 80px;">
-                                <a href="https://github.com/jhonssegura" target="blank">
-                                    <img style="filter: invert(0) sepia(1) saturate(0) hue-rotate(0deg); width: 150px; height: 150px;" src="images/github.png" alt="GitHub Logo">
-                                    <p>Github</p>
-                                </a>                               
-                            </div>
-                            <div style="display: inline-block; padding: 80px">
-                                <a href="https://www.linkedin.com/in/jhonssegura/" target="blank">
-                                    <img style="filter: invert(0) sepia(1) saturate(0) hue-rotate(0deg); width: 150px; height: 150px;" src="images/hackerrank.png" alt="HackerRank Logo">
-                                    <p>Hacker Rank</p>
-                                </a>                               
-                            </div>
-                            <div style="display: inline-block; padding: 80px">
-                                <a href="https://www.linkedin.com/in/jhonssegura/" target="blank">
-                                    <img style="filter: invert(0) sepia(1) saturate(0) hue-rotate(0deg); width: 120px; height: 120px;" src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn Logo">
-                                    <p>LinkendIn</p>
-                                </a>                               
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- End Social Data -->
-            </div>
+            <!-- JS Particles.js -->
+            <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+            <script src="js/app.js"></script>
+            <!-- JS Sections -->
+            <script src="js/scripts.js"></script>
+            <script>
+                // Function to load sections
+                function loadSection(sectionId, filePath) {
+                    fetch(filePath)
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById(sectionId).innerHTML = data;
+                        })
+                        .catch(error => console.error('Error loading section:', error));
+                }
+                // Load all sections
+                loadSection('about', 'sections/about.html');
+                loadSection('contact', 'sections/contact.html');
+                loadSection('portfolio', 'sections/portfolio.html');
+                loadSection('resume', 'sections/resume.html');
+            </script>
         </div>
-        <!-- End Tab Container -->
-        <footer>
-            <p>
-               © Jhonathan Salas | 2024
-            </p>
-        </footer>
-    </div>
-
-    <!-- JS Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="js/app.js"></script>
-</div>
-</body>
+    </body>
 </html>
