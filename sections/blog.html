@@ -1,0 +1,92 @@
+<div id="about">
+    <section class="clearfix">
+        <h3 style="text-align: center; color:gray">Blog</h3>
+        <div class="g1">
+            <style>
+                .container {
+                    max-width: 2000px;
+                    margin: auto;
+                    background: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                .post-list {
+                    list-style: none;
+                    padding: 0;
+                }
+                .post-list li {
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                }
+                .post-list li:last-child {
+                    border-bottom: none;
+                }
+                .post-title {
+                    font-size: 1.2em;
+                    color: #333;
+                    text-decoration: none;
+                }
+                .post-date {
+                    font-size: 0.9em;
+                    color: #777;
+                }
+                .post-content {
+                    display: none;
+                    margin-top: 20px;
+                }
+                .back-btn {
+                    display: none;
+                    margin-top: 20px;
+                    padding: 10px;
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            </style>
+        
+            <ul class="post-list">
+                <li>
+                    <a href="#" class="post-title" onclick="showPost(1)">Título del Post 1</a>
+                    <div class="post-date">Fecha: 10 de Febrero, 2025</div>
+                    <div class="post-description">Breve descripción del post 1...</div>
+                </li>
+                <li>
+                    <a href="#" class="post-title" onclick="showPost(2)">Título del Post 2</a>
+                    <div class="post-date">Fecha: 12 de Febrero, 2025</div>
+                    <div class="post-description">Breve descripción del post 2...</div>
+                </li>
+            </ul>
+            <div class="post-content" id="post-content"></div>
+            <button class="back-btn" onclick="goBack()">Volver</button>
+                
+            <script>
+                function showPost(id) {
+                    document.querySelector('.post-list').style.display = 'none';
+                    document.querySelector('.back-btn').style.display = 'block';
+                    
+                    let content = '';
+                    if (id === 1) {
+                        content = '<h2>Título del Post 1</h2><p>Contenido completo del post 1...</p>';
+                    } else if (id === 2) {
+                        content = '<h2>Título del Post 2</h2><p>Contenido completo del post 2...</p>';
+                    }
+                    
+                    document.querySelector('#post-content').innerHTML = content;
+                    document.querySelector('#post-content').style.display = 'block';
+                }
+                
+                function goBack() {
+                    document.querySelector('.post-list').style.display = 'block';
+                    document.querySelector('.back-btn').style.display = 'none';
+                    document.querySelector('#post-content').style.display = 'none';
+                }
+            </script>
+        </div>
+    </section>
+</div>
+    
+
