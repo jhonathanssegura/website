@@ -1,92 +1,169 @@
 <div id="about">
     <section class="clearfix">
-        <h3 style="text-align: center; color:gray">Blog</h3>
-        <div class="g1">
-            <style>
-                .container {
-                    max-width: 2000px;
-                    margin: auto;
-                    background: white;
-                    padding: 20px;
-                    border-radius: 10px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                }
-                .post-list {
-                    list-style: none;
-                    padding: 0;
-                }
-                .post-list li {
-                    margin: 10px 0;
-                    padding: 10px;
-                    border-bottom: 1px solid #ddd;
-                }
-                .post-list li:last-child {
-                    border-bottom: none;
-                }
-                .post-title {
-                    font-size: 1.2em;
-                    color: #333;
-                    text-decoration: none;
-                }
-                .post-date {
-                    font-size: 0.9em;
-                    color: #777;
-                }
-                .post-content {
-                    display: none;
-                    margin-top: 20px;
-                }
-                .back-btn {
-                    display: none;
-                    margin-top: 20px;
-                    padding: 10px;
-                    background: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-            </style>
-        
-            <ul class="post-list">
-                <li>
-                    <a href="#" class="post-title" onclick="showPost(1)">Título del Post 1</a>
-                    <div class="post-date">Fecha: 10 de Febrero, 2025</div>
-                    <div class="post-description">Breve descripción del post 1...</div>
-                </li>
-                <li>
-                    <a href="#" class="post-title" onclick="showPost(2)">Título del Post 2</a>
-                    <div class="post-date">Fecha: 12 de Febrero, 2025</div>
-                    <div class="post-description">Breve descripción del post 2...</div>
-                </li>
-            </ul>
-            <div class="post-content" id="post-content"></div>
-            <button class="back-btn" onclick="goBack()">Volver</button>
-                
-            <script>
-                function showPost(id) {
-                    document.querySelector('.post-list').style.display = 'none';
-                    document.querySelector('.back-btn').style.display = 'block';
-                    
-                    let content = '';
-                    if (id === 1) {
-                        content = '<h2>Título del Post 1</h2><p>Contenido completo del post 1...</p>';
-                    } else if (id === 2) {
-                        content = '<h2>Título del Post 2</h2><p>Contenido completo del post 2...</p>';
-                    }
-                    
-                    document.querySelector('#post-content').innerHTML = content;
-                    document.querySelector('#post-content').style.display = 'block';
-                }
-                
-                function goBack() {
-                    document.querySelector('.post-list').style.display = 'block';
-                    document.querySelector('.back-btn').style.display = 'none';
-                    document.querySelector('#post-content').style.display = 'none';
-                }
-            </script>
-        </div>
+      <h3 class="text-center" style="color:gray">Blog</h3>
+  
+      <!-- Buscador -->
+      <input type="text" id="searchInput" placeholder="Buscar por título o categoría..." style="width:100%;padding:10px;margin-bottom:20px;border-radius:5px;border:1px solid #ccc;">
+  
+      <!-- Lista de Posts -->
+      <div class="blog-container">
+        <ul class="post-list" id="post-list"></ul>
+  
+        <!-- Contenido del post -->
+        <div class="post-content" id="post-content"></div>
+  
+        <!-- Botón volver -->
+        <button class="back-btn" onclick="goBack()">← Volver al Blog</button>
+  
+        <!-- Paginación -->
+        <div id="pagination" style="margin-top:20px;text-align:center;"></div>
+      </div>
+  
+      <style>
+        :root {
+          --bg-color: #fff;
+          --text-color: #333;
+          --card-bg: #f9f9f9;
+        }
+        body.dark-mode {
+          --bg-color: #121212;
+          --text-color: #eee;
+          --card-bg: #1e1e1e;
+        }
+        .blog-container {
+          max-width: 1000px;
+          margin: auto;
+          padding: 20px;
+          background: var(--bg-color);
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          color: var(--text-color);
+        }
+        .post-list {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          padding: 0;
+          list-style: none;
+        }
+        .post-card {
+          background: var(--card-bg);
+          padding: 15px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        .post-card:hover {
+          transform: translateY(-2px);
+        }
+        .post-content {
+          display: none;
+          animation: fadeIn 0.3s ease;
+        }
+        .back-btn {
+          display: none;
+          margin-top: 20px;
+          background: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      </style>
+  
+  <script>
+    let posts = [];
+    const postsPerPage = 2;
+    let currentPage = 1;
+  
+    async function loadPosts() {
+      try {
+        const response = await fetch('blog/posts.json');
+        if (!response.ok) throw new Error('No se pudo cargar el archivo JSON.');
+        posts = await response.json();
+        displayPosts();
+      } catch (error) {
+        console.error('Error al cargar los posts:', error);
+        document.getElementById('post-list').innerHTML = '<p>Error al cargar los posts.</p>';
+      }
+    }
+  
+    function displayPosts(page = 1, filter = '') {
+      const list = document.getElementById('post-list');
+      const filtered = posts
+        .filter(p => p.title.toLowerCase().includes(filter.toLowerCase()) || p.category.toLowerCase().includes(filter.toLowerCase()))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+      const start = (page - 1) * postsPerPage;
+      const end = start + postsPerPage;
+  
+      list.innerHTML = filtered.slice(start, end).map(post => `
+        <li class="post-card" onclick="showPost(${post.id})">
+          <h4 class="post-title">${post.title}</h4>
+          <p class="post-date">Fecha: ${new Date(post.date).toLocaleDateString()}</p>
+          <p class="post-description">Categoría: ${post.category}</p>
+        </li>
+      `).join('');
+  
+      createPagination(filtered.length);
+    }
+  
+    function createPagination(totalPosts) {
+      const pageCount = Math.ceil(totalPosts / postsPerPage);
+      const pagination = document.getElementById('pagination');
+  
+      pagination.innerHTML = Array.from({ length: pageCount }, (_, i) => `
+        <button onclick="changePage(${i + 1})" style="margin:0 5px;padding:5px 10px;">${i + 1}</button>
+      `).join('');
+    }
+  
+    function changePage(page) {
+      currentPage = page;
+      const filter = document.getElementById('searchInput').value;
+      displayPosts(page, filter);
+    }
+  
+    function showPost(id) {
+      document.getElementById('post-list').style.display = 'none';
+      document.querySelector('.back-btn').style.display = 'inline-block';
+  
+      const post = posts.find(p => p.id === id);
+      const content = `
+        <article>
+          <h2>${post.title}</h2>
+          <p><em>Fecha: ${new Date(post.date).toLocaleDateString()} - Categoría: ${post.category}</em></p>
+          <p>${post.content}</p>
+        </article>
+      `;
+  
+      const postContent = document.getElementById('post-content');
+      postContent.innerHTML = content;
+      postContent.style.display = 'block';
+    }
+  
+    function goBack() {
+      document.getElementById('post-list').style.display = 'flex';
+      document.querySelector('.back-btn').style.display = 'none';
+      document.getElementById('post-content').style.display = 'none';
+    }
+  
+    document.getElementById('searchInput').addEventListener('input', () => {
+      displayPosts(1, document.getElementById('searchInput').value);
+    });
+  
+    window.onload = () => {
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.add('dark-mode');
+      }
+      loadPosts(); // Carga los datos desde blog/posts.json
+    };
+  </script>
+  
     </section>
-</div>
-    
-
+  </div>
+  

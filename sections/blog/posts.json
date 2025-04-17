@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "title": "Mi primer post",
+      "date": "2025-02-10",
+      "category": "Tecnología",
+      "cover": "img/post1-banner.jpg",
+      "markdown": "post-1.md"
+    },
+    {
+      "id": 2,
+      "title": "Otro tema",
+      "date": "2025-02-14",
+      "category": "Ciencia",
+      "cover": "img/post2.jpg",
+      "markdown": "post-2.md"
+    }
+  ]
+  
