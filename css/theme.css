@@ -1,0 +1,316 @@
+/* Variables CSS para tema oscuro fijo */
+:root {
+  /* Tema Oscuro - Siempre activo */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --border-color: #404040;
+  --shadow: 0 10px 30px rgba(0,0,0,0.3);
+  --shadow-hover: 0 15px 40px rgba(0,0,0,0.4);
+  --accent-color: #4fc3f7;
+  --accent-secondary: #29b6f6;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --card-bg: #2d2d2d;
+  --header-bg: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+/* Consistencia de fuentes en todo el proyecto */
+* {
+  font-family: 'Lato', sans-serif !important;
+}
+
+/* Títulos específicos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Elementos de código */
+pre, code, kbd, samp {
+  font-family: 'Menlo', 'Consolas', 'DejaVu Sans Mono', 'Monaco', monospace !important;
+}
+
+/* Elementos especiales que deben mantener su fuente */
+dt {
+  font-family: 'Futura', 'Century Gothic', 'AppleGothic', sans-serif !important;
+}
+
+span.amp {
+  font-family: 'Adobe Caslon Pro', 'Baskerville', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Georgia', 'Times New Roman', 'Times', serif !important;
+}
+
+/* Transiciones suaves */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Adaptación del body */
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Adaptación del header */
+#header {
+  background: transparent;
+  padding: 40px 0 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+#header #logo {
+  display: block !important;
+  opacity: 1;
+}
+
+  .header-title {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 2.8em !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: 2px;
+    margin-bottom: 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+.header-title i {
+  font-size: 1.2em;
+  color: var(--accent-color);
+}
+
+  .header-subtitle {
+    font-family: 'Lato', sans-serif !important;
+    font-size: 1.4em !important;
+    font-weight: 400 !important;
+    color: var(--text-secondary) !important;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0.9;
+  }
+
+.header-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(79, 195, 247, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Efectos hover para el header */
+#header:hover .header-divider {
+  width: 80px;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.5);
+}
+
+#header:hover .header-title {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Ocultar header en la sección About */
+#about ~ #header,
+#about + #header,
+body[data-section="about"] #header {
+  display: none !important;
+}
+
+/* Estilos para íconos en secciones */
+.section-title i,
+h3 i {
+  color: var(--accent-color) !important;
+  font-size: 0.9em !important;
+  margin-right: 10px;
+}
+
+/* Responsive para el header */
+@media only screen and (max-width: 768px) {
+  .header-title {
+    font-size: 2.2em !important;
+  }
+  
+  .header-subtitle {
+    font-size: 1.1em !important;
+  }
+  
+  #header {
+    padding: 30px 0 15px 0;
+  }
+  
+  .section-title i,
+  h3 i {
+    font-size: 0.8em !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-title {
+    font-size: 1.8em !important;
+  }
+  
+  .header-subtitle {
+    font-size: 0.9em !important;
+  }
+  
+  #header {
+    padding: 25px 0 10px 0;
+  }
+}
+
+/* Adaptación de las pestañas */
+.tab a {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.tab.active a {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.tab a:hover {
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+}
+
+.etabs .tab a i {
+  font-size: 1.2em;
+  margin-right: 7px;
+  color: var(--accent-color);
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+.etabs .tab.active a i,
+.etabs .tab a:hover i {
+  color: var(--accent-secondary);
+}
+
+/* Adaptación del footer */
+footer {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 8px !important;
+  margin-top: 3em !important;
+  padding: 20px !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  border-radius: 8px 8px 0 0;
+}
+
+footer p {
+  margin: 0 !important;
+  font-family: 'Lato', sans-serif !important;
+  font-size: 0.9em !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.5px !important;
+}
+
+footer p::before {
+  content: '© ';
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Efectos hover para el footer */
+footer:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover) !important;
+  transition: all 0.3s ease;
+}
+
+footer:hover::before {
+  background: linear-gradient(90deg, var(--accent-secondary), var(--accent-color));
+  transition: background 0.3s ease;
+}
+
+/* Consistencia de fuentes para elementos dinámicos */
+button, input, select, textarea {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.filter-btn, .category-btn {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.project-card *, .blog-card * {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.project-title, .blog-title {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.modal * {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.modal h1, .modal h2, .modal h3, .modal h4, .modal h5, .modal h6 {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Elementos generados dinámicamente */
+.project-content *, .blog-content * {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.project-content h1, .project-content h2, .project-content h3, 
+.project-content h4, .project-content h5, .project-content h6,
+.blog-content h1, .blog-content h2, .blog-content h3, 
+.blog-content h4, .blog-content h5, .blog-content h6 {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Responsive para el footer */
+@media only screen and (max-width: 768px) {
+  footer {
+    margin-top: 2em !important;
+    padding: 15px !important;
+  }
+  
+  footer p {
+    font-size: 0.85em !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  footer {
+    margin-top: 1.5em !important;
+    padding: 12px !important;
+  }
+  
+  footer p {
+    font-size: 0.8em !important;
+  }
+}
