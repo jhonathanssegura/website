@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" data-theme="dark">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,7 +12,8 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/estilos.css"> 
-        <link rel="stylesheet" href="css/form.css">    
+        <link rel="stylesheet" href="css/form.css">
+        <link rel="stylesheet" href="css/theme.css">
         <style>
             .text-center { text-align: center; }
         </style>
@@ -22,19 +23,22 @@
         <script src="js/vendor/jquery.easytabs.min.js"></script>
         <script src="js/main.js"></script>
     </head>
-    <body class="bg-fixed bg-1" style="color: whitesmoke">
+    <body class="bg-fixed bg-1">
         <div id="particles-js"></div>
-        <div class="main-container" style="color: whitesmoke">
+        <div class="main-container">
             <div class="main wrapper clearfix">
                 <!-- Header Start -->
                 <header id="header">
                     <div id="logo">
-                        <h3>
+                        <h3 class="header-title">
+                            <i class="fa fa-user-circle"></i>
                             Jhonathan Segura
                         </h3>
-                        <h4>
+                        <h4 class="header-subtitle">
+                            <i class="fa fa-code"></i>
                             Senior Software Engineer
                         </h4>
+                        <div class="header-divider"></div>
                     </div>
                 </header>
                 <!-- Header End -->
@@ -43,19 +47,19 @@
                     <!-- Tab List -->
                     <ul class='etabs'>
                         <li class='tab' id="tab-about">
-                        <a href="#about"><i class="icon-user"></i><span>About Me</span></a>
+                        <a href="#about"><span>About Me</span></a>
                         </li>
                         <li class='tab'>
-                        <a href="#resume"><i class="icon-file-text"></i><span>Resume</span></a>
+                        <a href="#resume"><span>Resume</span></a>
                         </li>
                         <li class='tab'>
-                        <a href="#portfolio"><i class="icon-heart"></i><span>Portfolio</span></a>
+                        <a href="#portfolio"><span>Portfolio</span></a>
                         </li>
                         <li class='tab'>
-                            <a href="#blog"><i class="icon-pencil"></i><span>Blog</span></a>
+                            <a href="#blog"><span>Blog</span></a>
                             </li>
                         <li class='tab'>
-                        <a href="#contact"><i class="icon-envelope"></i><span>Contact</span></a>
+                        <a href="#contact"><span>Contact</span></a>
                         </li>
                     </ul>
                     <!-- End Tab List -->
@@ -73,23 +77,137 @@
                     </div>
                 </div>
                 <!-- End Tab Container -->
-                <footer><p>© Jhonathan Segura - 2025</p></footer>
+                <footer>
+                    <p>Jhonathan Segura - 2025</p>
+                </footer>
             </div>
             <!-- JS Particles.js -->
             <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
             <script src="js/app.js"></script>
             <!-- JS Sections -->
             <script src="js/scripts.js"></script>
+            <script src="js/sections.js"></script>
+            
+            <!-- Script principal -->
             <script>
+                // Event listeners
+                document.addEventListener('DOMContentLoaded', function() {
+                    // El tema oscuro ya está establecido por defecto
+                    
+                    // Función para manejar la visibilidad del header según la sección activa
+                    function handleHeaderVisibility() {
+                        const header = document.getElementById('header');
+                        const activeTab = document.querySelector('.tab.active');
+                        
+                        if (activeTab && activeTab.querySelector('a[href="#about"]')) {
+                            header.style.display = 'none';
+                        } else {
+                            header.style.display = 'block';
+                        }
+                    }
+                    
+                    // Observar cambios en las pestañas activas
+                    const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                handleHeaderVisibility();
+                            }
+                        });
+                    });
+                    
+                    // Observar todos los elementos .tab
+                    document.querySelectorAll('.tab').forEach(function(tab) {
+                        observer.observe(tab, { attributes: true });
+                    });
+                    
+                    // Verificar estado inicial
+                    handleHeaderVisibility();
+                });
+                
                 // Function to load sections
                 function loadSection(sectionId, filePath) {
+                    console.log('Loading section:', sectionId);
                     fetch(filePath)
-                        .then(response => response.text())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
                         .then(data => {
                             document.getElementById(sectionId).innerHTML = data;
+                            console.log('Section loaded:', sectionId);
+                            
+                            // Initialize section-specific functionality
+                            if (sectionId === 'portfolio') {
+                                initializePortfolio();
+                            }
+                            if (sectionId === 'blog') {
+                                initializeBlog();
+                            }
                         })
-                        .catch(error => console.error('Error loading section:', error));
+                        .catch(error => {
+                            console.error('Error loading section:', sectionId, error);
+                            document.getElementById(sectionId).innerHTML = `
+                                <div style="text-align: center; padding: 50px; color: #666;">
+                                    <h3>Error loading content</h3>
+                                    <p>Unable to load ${sectionId} section.</p>
+                                    <p>Error: ${error.message}</p>
+                                </div>
+                            `;
+                        });
                 }
+
+                // Initialize portfolio functionality
+                function initializePortfolio() {
+                    console.log('Initializing portfolio...');
+                    
+                    // Load projects data
+                    fetch('data/projects.json')
+                        .then(response => response.json())
+                        .then(projects => {
+                            window.allProjects = projects;
+                            window.filteredProjects = [...projects];
+                            window.currentFilter = 'all';
+                            
+                            displayProjects();
+                            setupPortfolioEventListeners();
+                        })
+                        .catch(error => {
+                            console.error('Error loading projects:', error);
+                            document.getElementById('projectsContainer').innerHTML = `
+                                <div style="text-align: center; color: #666;">
+                                    <p>Error loading projects. Please check the console for details.</p>
+                                </div>
+                            `;
+                        });
+                }
+
+                // Initialize blog functionality
+                function initializeBlog() {
+                    console.log('Initializing blog...');
+                    
+                    // Load blog articles data
+                    fetch('data/blog-articles.json')
+                        .then(response => response.json())
+                        .then(articles => {
+                            window.allArticles = articles;
+                            window.filteredArticles = [...articles];
+                            window.currentCategory = 'all';
+                            
+                            displayBlogArticles();
+                            setupBlogEventListeners();
+                        })
+                        .catch(error => {
+                            console.error('Error loading blog articles:', error);
+                            document.getElementById('blogContainer').innerHTML = `
+                                <div style="text-align: center; color: #666;">
+                                    <p>Error loading blog articles. Please check the console for details.</p>
+                                </div>
+                            `;
+                        });
+                }
+
                 // Load all sections
                 loadSection('about', 'sections/about.html');
                 loadSection('contact', 'sections/contact.html');
