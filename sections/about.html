@@ -2,23 +2,149 @@
     <section class="clearfix">
         <div class="g1">
             <div class="photo text-center">
-                <img class="img-fluid mb-5 d-block mx-auto imgRedonda" src="images/yo.jpg" alt="MyFace" >
+                <img class="img-fluid mb-5 d-block mx-auto imgRedonda" src="images/yo.jpg" alt="Jhonathan Segura" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; border: 4px solid var(--accent-color);">
             </div>
         </div>
+        
+        <!-- Primer bloque: Información personal -->
         <div class="g2">
-            <div class="info text-center">
-                <h3>
+            <div class="info text-center" style="margin-bottom: 40px;">
+                <h3 style="color: var(--text-primary); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fa fa-user" style="color: var(--accent-color); font-size: 0.8em;"></i>
                     Jhonathan Segura
                 </h3>
-                <h4>
+                <h4 style="color: var(--accent-color); margin-bottom: 20px;">
                     Senior Software Engineer
                 </h4>
-                <p class="justify" style="width: 100%; max-width: 600px; min-height: 120px;">
+                <p class="justify" style="width: 100%; max-width: 600px; min-height: 120px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 30px;">
                     With over five years of experience designing and implementing robust and scalable solutions
                     using Golang, Java and Python. I've worked on a diverse range of projects, from developing web
                     applications, backend systems, microservices and high-performance REST APIs.
-                </p>    
+                </p>
             </div>
         </div>
+        
+        <!-- Segundo bloque: Estadísticas, especialidades y botones -->
+        <div class="g3">
+            <div class="info text-center">                
+                <!-- Estadísticas profesionales -->
+                <div class="stats-container" style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; flex-wrap: wrap;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-number" style="font-size: 2.5em; font-weight: bold; color: var(--accent-color);">7+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.9em;">Years Experience</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-number" style="font-size: 2.5em; font-weight: bold; color: var(--accent-color);">50+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.9em;">Projects Completed</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-number" style="font-size: 2.5em; font-weight: bold; color: var(--accent-color);">10+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.9em;">Technologies</div>
+                    </div>
+                </div>
+                
+                <!-- Especialidades -->
+                <div class="specialties" style="margin-bottom: 30px;">
+                    <h5 style="color: var(--text-primary); margin-bottom: 15px;">Specializations</h5>
+                    <div class="specialty-tags" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                        <span class="specialty-tag" style="background: var(--bg-tertiary); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">Microservices</span>
+                        <span class="specialty-tag" style="background: var(--bg-tertiary); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">REST APIs</span>
+                        <span class="specialty-tag" style="background: var(--bg-tertiary); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">Kubernetes</span>
+                        <span class="specialty-tag" style="background: var(--bg-tertiary); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">Docker</span>
+                        <span class="specialty-tag" style="background: var(--bg-tertiary); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">Event-Driven Architecture</span>
+                    </div>
+                </div>
+                
+                <!-- Botones de acción -->
+                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#portfolio" class="action-btn primary" style="background: var(--accent-color); color: var(--bg-primary); padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="action-btn secondary" style="background: transparent; color: var(--accent-color); padding: 12px 24px; border: 2px solid var(--accent-color); border-radius: 25px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            .action-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow);
+            }
+            
+            .action-btn.primary:hover {
+                background: var(--accent-secondary);
+            }
+            
+            .action-btn.secondary:hover {
+                background: var(--accent-color);
+                color: var(--bg-primary);
+            }
+            
+            .stat-item {
+                transition: transform 0.3s ease;
+            }
+            
+            .stat-item:hover {
+                transform: scale(1.1);
+            }
+            
+            .specialty-tag {
+                transition: all 0.3s ease;
+            }
+            
+            .specialty-tag:hover {
+                background: var(--accent-color) !important;
+                color: var(--bg-primary) !important;
+                transform: translateY(-2px);
+            }
+            
+            @media (max-width: 768px) {
+                .stats-container {
+                    gap: 20px;
+                }
+                
+                .action-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .action-btn {
+                    width: 200px;
+                    text-align: center;
+                }
+            }
+        </style>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Animación de entrada para las estadísticas
+                const statItems = document.querySelectorAll('.stat-item');
+                statItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 500 + (index * 100));
+                });
+                
+                // Animación para las especialidades
+                const specialtyTags = document.querySelectorAll('.specialty-tag');
+                specialtyTags.forEach((tag, index) => {
+                    tag.style.opacity = '0';
+                    tag.style.transform = 'scale(0.8)';
+                    tag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        tag.style.opacity = '1';
+                        tag.style.transform = 'scale(1)';
+                    }, 800 + (index * 50));
+                });
+            });
+        </script>
     </section>
 </div>

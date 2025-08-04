@@ -1,169 +1,344 @@
-<div id="about">
+<div id="blog">
     <section class="clearfix">
-      <h3 class="text-center" style="color:gray">Blog</h3>
-  
-      <!-- Buscador -->
-      <input type="text" id="searchInput" placeholder="Buscar por título o categoría..." style="width:100%;padding:10px;margin-bottom:20px;border-radius:5px;border:1px solid #ccc;">
-  
-      <!-- Lista de Posts -->
-      <div class="blog-container">
-        <ul class="post-list" id="post-list"></ul>
-  
-        <!-- Contenido del post -->
-        <div class="post-content" id="post-content"></div>
-  
-        <!-- Botón volver -->
-        <button class="back-btn" onclick="goBack()">← Volver al Blog</button>
-  
-        <!-- Paginación -->
-        <div id="pagination" style="margin-top:20px;text-align:center;"></div>
-      </div>
-  
-      <style>
-        :root {
-          --bg-color: #fff;
-          --text-color: #333;
-          --card-bg: #f9f9f9;
-        }
-        body.dark-mode {
-          --bg-color: #121212;
-          --text-color: #eee;
-          --card-bg: #1e1e1e;
-        }
-        .blog-container {
-          max-width: 1000px;
-          margin: auto;
-          padding: 20px;
-          background: var(--bg-color);
-          border-radius: 10px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          color: var(--text-color);
-        }
-        .post-list {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          padding: 0;
-          list-style: none;
-        }
-        .post-card {
-          background: var(--card-bg);
-          padding: 15px;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: 0.3s;
-        }
-        .post-card:hover {
-          transform: translateY(-2px);
-        }
-        .post-content {
-          display: none;
-          animation: fadeIn 0.3s ease;
-        }
-        .back-btn {
-          display: none;
-          margin-top: 20px;
-          background: #007bff;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      </style>
-  
-  <script>
-    let posts = [];
-    const postsPerPage = 2;
-    let currentPage = 1;
-  
-    async function loadPosts() {
-      try {
-        const response = await fetch('blog/posts.json');
-        if (!response.ok) throw new Error('No se pudo cargar el archivo JSON.');
-        posts = await response.json();
-        displayPosts();
-      } catch (error) {
-        console.error('Error al cargar los posts:', error);
-        document.getElementById('post-list').innerHTML = '<p>Error al cargar los posts.</p>';
-      }
-    }
-  
-    function displayPosts(page = 1, filter = '') {
-      const list = document.getElementById('post-list');
-      const filtered = posts
-        .filter(p => p.title.toLowerCase().includes(filter.toLowerCase()) || p.category.toLowerCase().includes(filter.toLowerCase()))
-        .sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-      const start = (page - 1) * postsPerPage;
-      const end = start + postsPerPage;
-  
-      list.innerHTML = filtered.slice(start, end).map(post => `
-        <li class="post-card" onclick="showPost(${post.id})">
-          <h4 class="post-title">${post.title}</h4>
-          <p class="post-date">Fecha: ${new Date(post.date).toLocaleDateString()}</p>
-          <p class="post-description">Categoría: ${post.category}</p>
-        </li>
-      `).join('');
-  
-      createPagination(filtered.length);
-    }
-  
-    function createPagination(totalPosts) {
-      const pageCount = Math.ceil(totalPosts / postsPerPage);
-      const pagination = document.getElementById('pagination');
-  
-      pagination.innerHTML = Array.from({ length: pageCount }, (_, i) => `
-        <button onclick="changePage(${i + 1})" style="margin:0 5px;padding:5px 10px;">${i + 1}</button>
-      `).join('');
-    }
-  
-    function changePage(page) {
-      currentPage = page;
-      const filter = document.getElementById('searchInput').value;
-      displayPosts(page, filter);
-    }
-  
-    function showPost(id) {
-      document.getElementById('post-list').style.display = 'none';
-      document.querySelector('.back-btn').style.display = 'inline-block';
-  
-      const post = posts.find(p => p.id === id);
-      const content = `
-        <article>
-          <h2>${post.title}</h2>
-          <p><em>Fecha: ${new Date(post.date).toLocaleDateString()} - Categoría: ${post.category}</em></p>
-          <p>${post.content}</p>
-        </article>
-      `;
-  
-      const postContent = document.getElementById('post-content');
-      postContent.innerHTML = content;
-      postContent.style.display = 'block';
-    }
-  
-    function goBack() {
-      document.getElementById('post-list').style.display = 'flex';
-      document.querySelector('.back-btn').style.display = 'none';
-      document.getElementById('post-content').style.display = 'none';
-    }
-  
-    document.getElementById('searchInput').addEventListener('input', () => {
-      displayPosts(1, document.getElementById('searchInput').value);
-    });
-  
-    window.onload = () => {
-      if (document.body.classList.contains('dark-mode')) {
-        document.body.classList.add('dark-mode');
-      }
-      loadPosts(); // Carga los datos desde blog/posts.json
-    };
-  </script>
-  
+        <h3 class="text-center" style="color:gray; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+            <i class="fa fa-newspaper-o" style="color: var(--accent-color); font-size: 0.8em;"></i>
+            Technical Blog
+        </h3>
+        
+        <!-- Filtros y búsqueda -->
+        <div class="blog-filters" style="margin-bottom: 30px;">
+            <div class="search-container" style="margin-bottom: 20px;">
+                <input type="text" id="blogSearch" placeholder="Search articles..." 
+                       style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+            </div>
+            <div class="category-filters" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="golang">Go</button>
+                <button class="category-btn" data-category="microservices">Microservices</button>
+                <button class="category-btn" data-category="architecture">Architecture</button>
+                <button class="category-btn" data-category="performance">Performance</button>
+                <button class="category-btn" data-category="devops">DevOps</button>
+                <button class="category-btn" data-category="tutorials">Tutorials</button>
+            </div>
+        </div>
+
+        <!-- Contenedor de artículos -->
+        <div id="blogContainer" class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+            <!-- Los artículos se cargarán dinámicamente aquí -->
+        </div>
+
+        <!-- Loading spinner -->
+        <div id="blogLoadingSpinner" style="text-align: center; padding: 40px; display: none;">
+            <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+            <p style="margin-top: 15px; color: #666;">Loading articles...</p>
+        </div>
+
+        <!-- Modal para leer artículo completo -->
+        <div id="articleModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);">
+            <div class="modal-content" style="background-color: #fefefe; margin: 2% auto; padding: 30px; border-radius: 10px; width: 90%; max-width: 900px; max-height: 90vh; overflow-y: auto;">
+                <span class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+                <div id="articleContent"></div>
+            </div>
+        </div>
+
+        <style>
+            .category-btn {
+                padding: 8px 16px;
+                border: 2px solid #e74c3c;
+                background: transparent;
+                color: #e74c3c;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 14px;
+            }
+
+            .category-btn:hover, .category-btn.active {
+                background: #e74c3c;
+                color: white;
+            }
+
+            .blog-card {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                cursor: pointer;
+            }
+
+            .blog-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+
+            .blog-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .blog-content {
+                padding: 20px;
+            }
+
+            .blog-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #333;
+                line-height: 1.4;
+            }
+
+            .blog-excerpt {
+                color: #666;
+                margin-bottom: 15px;
+                line-height: 1.6;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .blog-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+                font-size: 14px;
+                color: #888;
+            }
+
+            .blog-category {
+                background: #e74c3c;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .blog-stats {
+                display: flex;
+                gap: 15px;
+                font-size: 14px;
+                color: #666;
+            }
+
+            .read-more {
+                color: #3498db;
+                font-weight: 500;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .read-more:hover {
+                color: #2980b9;
+            }
+
+            .featured-article {
+                border: 2px solid #e74c3c;
+            }
+
+            .article-content {
+                line-height: 1.8;
+                color: #333;
+            }
+
+            .article-content h1, .article-content h2, .article-content h3 {
+                color: #2c3e50;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+
+            .article-content code {
+                background: #f8f9fa;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+            }
+
+            .article-content pre {
+                background: #2c3e50;
+                color: #ecf0f1;
+                padding: 20px;
+                border-radius: 8px;
+                overflow-x: auto;
+                margin: 20px 0;
+            }
+
+            .article-content blockquote {
+                border-left: 4px solid #3498db;
+                padding-left: 20px;
+                margin: 20px 0;
+                font-style: italic;
+                color: #666;
+            }
+        </style>
+
+        <script>
+            let allArticles = [];
+            let filteredArticles = [];
+            let currentCategory = 'all';
+
+            // Cargar artículos desde JSON
+            async function loadBlogArticles() {
+                const spinner = document.getElementById('blogLoadingSpinner');
+                const container = document.getElementById('blogContainer');
+                
+                spinner.style.display = 'block';
+                container.style.display = 'none';
+
+                try {
+                    const response = await fetch('data/blog-articles.json');
+                    if (!response.ok) {
+                        throw new Error('Failed to load articles');
+                    }
+                    allArticles = await response.json();
+                    filteredArticles = [...allArticles];
+                    displayBlogArticles();
+                } catch (error) {
+                    console.error('Error loading articles:', error);
+                    container.innerHTML = '<p style="text-align: center; color: #666;">Error loading articles. Please try again later.</p>';
+                } finally {
+                    spinner.style.display = 'none';
+                    container.style.display = 'grid';
+                }
+            }
+
+            function displayBlogArticles() {
+                const container = document.getElementById('blogContainer');
+                
+                if (filteredArticles.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666; grid-column: 1 / -1;">No articles found matching your criteria.</p>';
+                    return;
+                }
+
+                container.innerHTML = filteredArticles.map(article => `
+                    <div class="blog-card ${article.featured ? 'featured-article' : ''}" onclick="showArticleDetails(${article.id})">
+                        ${article.featured ? '<span class="featured-badge">Featured</span>' : ''}
+                        <img src="${article.cover}" alt="${article.title}" class="blog-image">
+                        <div class="blog-content">
+                            <h4 class="blog-title">${article.title}</h4>
+                            <p class="blog-excerpt">${article.excerpt}</p>
+                            <div class="blog-meta">
+                                <span class="blog-category">${article.category}</span>
+                                <span>${new Date(article.date).toLocaleDateString()}</span>
+                            </div>
+                            <div class="blog-stats">
+                                <span>⏱️ ${article.readTime} min read</span>
+                                <span>👁️ ${article.views || 0} views</span>
+                                <span>💬 ${article.comments || 0} comments</span>
+                            </div>
+                            <a href="#" class="read-more" onclick="event.stopPropagation(); showArticleDetails(${article.id})">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            async function showArticleDetails(articleId) {
+                const article = allArticles.find(a => a.id === articleId);
+                if (!article) return;
+
+                const modal = document.getElementById('articleModal');
+                const content = document.getElementById('articleContent');
+
+                // Mostrar loading en el modal
+                content.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div><p style="margin-top: 15px;">Loading article...</p></div>';
+                modal.style.display = 'block';
+
+                try {
+                    // Cargar contenido del artículo
+                    const response = await fetch(`data/blog/${article.contentFile}`);
+                    const articleContent = await response.text();
+
+                    content.innerHTML = `
+                        <article class="article-content">
+                            <header style="margin-bottom: 30px;">
+                                <h1 style="color: #2c3e50; margin-bottom: 10px;">${article.title}</h1>
+                                <div style="display: flex; gap: 20px; color: #666; font-size: 14px; margin-bottom: 20px;">
+                                    <span>📅 ${new Date(article.date).toLocaleDateString()}</span>
+                                    <span>⏱️ ${article.readTime} min read</span>
+                                    <span>👁️ ${article.views || 0} views</span>
+                                    <span class="blog-category">${article.category}</span>
+                                </div>
+                                <p style="color: #666; font-size: 16px; line-height: 1.6;">${article.excerpt}</p>
+                            </header>
+                            <div id="articleBody"></div>
+                        </article>
+                    `;
+
+                    // Renderizar markdown
+                    const articleBody = document.getElementById('articleBody');
+                    articleBody.innerHTML = marked.parse(articleContent);
+
+                } catch (error) {
+                    console.error('Error loading article content:', error);
+                    content.innerHTML = '<p style="text-align: center; color: #666;">Error loading article content.</p>';
+                }
+            }
+
+            // Filtros
+            function filterArticles(category) {
+                currentCategory = category;
+                const searchTerm = document.getElementById('blogSearch').value.toLowerCase();
+                
+                filteredArticles = allArticles.filter(article => {
+                    const matchesCategory = category === 'all' || 
+                        article.category.toLowerCase() === category.toLowerCase() ||
+                        article.tags.some(tag => tag.toLowerCase().includes(category));
+                    
+                    const matchesSearch = article.title.toLowerCase().includes(searchTerm) ||
+                        article.excerpt.toLowerCase().includes(searchTerm) ||
+                        article.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                    
+                    return matchesCategory && matchesSearch;
+                });
+
+                displayBlogArticles();
+            }
+
+            // Event listeners
+            document.addEventListener('DOMContentLoaded', function() {
+                // Cargar marked.js para renderizar markdown
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+                script.onload = function() {
+                    loadBlogArticles();
+                };
+                document.head.appendChild(script);
+
+                // Filtros de categoría
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        filterArticles(this.dataset.category);
+                    });
+                });
+
+                // Búsqueda
+                document.getElementById('blogSearch').addEventListener('input', function() {
+                    filterArticles(currentCategory);
+                });
+
+                // Modal
+                document.querySelectorAll('.close').forEach(closeBtn => {
+                    closeBtn.addEventListener('click', function() {
+                        document.getElementById('articleModal').style.display = 'none';
+                    });
+                });
+
+                window.addEventListener('click', function(event) {
+                    const modal = document.getElementById('articleModal');
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        </script>
     </section>
-  </div>
+</div>
   

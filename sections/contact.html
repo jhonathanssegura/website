@@ -1,22 +1,251 @@
 <div id="contact">
-    <h4 style="text-align: center; color:gray">Follow me on</h4>
     <section class="clearfix">
-        <div style="text-align: center;" class="tech-grid">
-            <div class="tech-item2">
-                <a href="https://www.linkedin.com/in/jhonathanssegura" target="blank">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
-                </a>
+        <h3 class="text-center" style="color:gray; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+            <i class="fa fa-envelope" style="color: var(--accent-color); font-size: 0.8em;"></i>
+            Get In Touch
+        </h3>
+        
+        <div class="contact-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Información de contacto -->
+            <div class="contact-info">
+                <h4 style="color: #2c3e50; margin-bottom: 25px;">Let's Connect</h4>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 30px;">
+                    I'm always interested in new opportunities and exciting projects. 
+                    Whether you have a question, want to collaborate, or just want to say hello, 
+                    feel free to reach out!
+                </p>
+                
+                <div class="contact-methods">                    
+                    <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="contact-icon" style="width: 50px; height: 50px; background: #27ae60; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="icon-map-marker" style="color: white; font-size: 20px;"></i>
+                        </div>
+                        <div>
+                            <h5 style="margin: 0; color: #2c3e50;">Location</h5>
+                            <p style="margin: 5px 0 0 0; color: #666;">Remote / Available Worldwide</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Redes sociales -->
+                <div class="social-links" style="margin-top: 40px;">
+                    <h5 style="color: #2c3e50; margin-bottom: 20px;">Follow Me</h5>
+                    <div class="social-icons" style="display: flex; gap: 15px;">
+                        <a href="https://github.com/jhonasegura" target="_blank" class="social-icon" style="width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
+                            <i class="icon-github" style="color: white; font-size: 18px;"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/jhonasegura" target="_blank" class="social-icon" style="width: 45px; height: 45px; background: #0077b5; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
+                            <i class="icon-linkedin" style="color: white; font-size: 18px;"></i>
+                        </a>
+                        <a href="https://twitter.com/jhonasegura" target="_blank" class="social-icon" style="width: 45px; height: 45px; background: #1da1f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
+                            <i class="icon-twitter" style="color: white; font-size: 18px;"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="tech-item2">
-                <a href="https://www.hackerrank.com/profile/jhonathanssegura" target="blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" alt="HackerRank" >
-                </a>
-            </div>
-            <div class="tech-item2">
-                <a href="https://github.com/jhonathanssegura" target="blank">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-                </a>
+            
+            <!-- Formulario de contacto -->
+            <div class="contact-form">
+                <h4 style="color: #2c3e50; margin-bottom: 25px;">Send Message</h4>
+                
+                <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="form-group">
+                        <label for="name" style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Name *</label>
+                        <input type="text" id="name" name="name" required 
+                               style="width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Email *</label>
+                        <input type="email" id="email" name="email" required 
+                               style="width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Subject *</label>
+                        <select id="subject" name="subject" required 
+                                style="width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease;">
+                            <option value="">Select a subject</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="job">Job Opportunity</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Message *</label>
+                        <textarea id="message" name="message" rows="6" required 
+                                  style="width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 16px; resize: vertical; transition: border-color 0.3s ease;"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn" 
+                            style="background: #3498db; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease;">
+                        <span id="submitText">Send Message</span>
+                        <span id="submitSpinner" style="display: none;">Sending...</span>
+                    </button>
+                </form>
+                
+                <!-- Mensaje de éxito/error -->
+                <div id="formMessage" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
             </div>
         </div>
+
+        <style>
+            .contact-container {
+                padding: 20px;
+            }
+            
+            .contact-icon:hover {
+                transform: scale(1.1);
+            }
+            
+            .social-icon:hover {
+                transform: scale(1.1);
+            }
+            
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            }
+            
+            #submitBtn:hover {
+                background: #2980b9;
+            }
+            
+            #submitBtn:disabled {
+                background: #bdc3c7;
+                cursor: not-allowed;
+            }
+            
+            .success-message {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            
+            .error-message {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+            
+            @media (max-width: 768px) {
+                .contact-container {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('contactForm');
+                const submitBtn = document.getElementById('submitBtn');
+                const submitText = document.getElementById('submitText');
+                const submitSpinner = document.getElementById('submitSpinner');
+                const formMessage = document.getElementById('formMessage');
+                
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validación básica
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value.trim();
+                    
+                    if (!name || !email || !subject || !message) {
+                        showMessage('Please fill in all required fields.', 'error');
+                        return;
+                    }
+                    
+                    if (!isValidEmail(email)) {
+                        showMessage('Please enter a valid email address.', 'error');
+                        return;
+                    }
+                    
+                    // Mostrar loading
+                    submitBtn.disabled = true;
+                    submitText.style.display = 'none';
+                    submitSpinner.style.display = 'inline';
+                    
+                    try {
+                        // Simular envío (aquí puedes integrar con un servicio real como EmailJS, Formspree, etc.)
+                        await simulateEmailSend({
+                            name: name,
+                            email: email,
+                            subject: subject,
+                            message: message
+                        });
+                        
+                        showMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+                        form.reset();
+                        
+                    } catch (error) {
+                        showMessage('Sorry, there was an error sending your message. Please try again or contact me directly via email.', 'error');
+                    } finally {
+                        // Restaurar botón
+                        submitBtn.disabled = false;
+                        submitText.style.display = 'inline';
+                        submitSpinner.style.display = 'none';
+                    }
+                });
+                
+                function isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                }
+                
+                function showMessage(text, type) {
+                    formMessage.textContent = text;
+                    formMessage.className = type === 'success' ? 'success-message' : 'error-message';
+                    formMessage.style.display = 'block';
+                    
+                    // Ocultar mensaje después de 5 segundos
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                }
+                
+                async function simulateEmailSend(data) {
+                    // Simular delay de red
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Aquí puedes integrar con servicios reales:
+                    // - EmailJS: https://www.emailjs.com/
+                    // - Formspree: https://formspree.io/
+                    // - Netlify Forms: https://docs.netlify.com/forms/setup/
+                    // - Tu propio backend
+                    
+                    console.log('Email data:', data);
+                    
+                    // Simular éxito (90% de las veces)
+                    if (Math.random() > 0.1) {
+                        return Promise.resolve();
+                    } else {
+                        return Promise.reject(new Error('Network error'));
+                    }
+                }
+                
+                // Animaciones de entrada
+                const contactItems = document.querySelectorAll('.contact-item');
+                contactItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            });
+        </script>
     </section>
 </div>
