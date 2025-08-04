@@ -1,0 +1,91 @@
+{
+  "site": {
+    "title": "Jhonathan Segura - Senior Software Engineer",
+    "description": "Portfolio website showcasing Go development, microservices, and cloud technologies",
+    "author": "Jhonathan Segura",
+    "url": "https://jhonasegura.dev",
+    "language": "en"
+  },
+  "personal": {
+    "name": "Jhonathan Segura",
+    "title": "Senior Software Engineer",
+    "email": "jhonathan.segura@example.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "Remote / Available Worldwide",
+    "bio": "With over five years of experience designing and implementing robust and scalable solutions using Golang, Java and Python. I've worked on a diverse range of projects, from developing web applications, backend systems, microservices and high-performance REST APIs.",
+    "photo": "images/yo.jpg"
+  },
+  "social": {
+    "github": "https://github.com/jhonasegura",
+    "linkedin": "https://linkedin.com/in/jhonasegura",
+    "twitter": "https://twitter.com/jhonasegura",
+    "hackerrank": "https://hackerrank.com/jhonasegura"
+  },
+  "skills": {
+    "languages": ["Go", "Python", "Java"],
+    "technologies": ["Git", "Docker", "Spring Boot", "Kubernetes", "Kafka", "Gin"],
+    "databases": ["PostgreSQL", "MySQL", "MongoDB"],
+    "tools": ["Visual Studio Code", "Postman", "JMeter", "Rancher", "DBeaver", "VirtualBox"]
+  },
+  "experience": {
+    "years": 5,
+    "projects": 50,
+    "technologies": 10
+  },
+  "specializations": [
+    "Go Development",
+    "Microservices",
+    "REST APIs",
+    "Kubernetes",
+    "Docker",
+    "Event-Driven Architecture"
+  ],
+  "colors": {
+    "primary": "#3498db",
+    "secondary": "#e74c3c",
+    "success": "#27ae60",
+    "warning": "#f39c12",
+    "danger": "#e74c3c",
+    "dark": "#2c3e50",
+    "light": "#ecf0f1",
+    "gray": "#666"
+  },
+  "contact": {
+    "formEnabled": true,
+    "emailService": "demo",
+    "emailServiceConfig": {
+      "emailjs": {
+        "userId": "YOUR_USER_ID",
+        "serviceId": "YOUR_SERVICE_ID",
+        "templateId": "YOUR_TEMPLATE_ID"
+      },
+      "formspree": {
+        "formId": "YOUR_FORM_ID"
+      }
+    }
+  },
+  "analytics": {
+    "enabled": false,
+    "googleAnalytics": {
+      "trackingId": "GA_MEASUREMENT_ID"
+    }
+  },
+  "features": {
+    "particles": true,
+    "animations": true,
+    "search": true,
+    "filters": true,
+    "modals": true,
+    "responsive": true
+  },
+  "content": {
+    "projectsFile": "data/projects.json",
+    "blogFile": "data/blog-articles.json",
+    "blogContentDir": "data/blog/"
+  },
+  "seo": {
+    "keywords": ["Go developer", "microservices", "backend", "API", "Kubernetes", "Docker"],
+    "ogImage": "images/og-image.jpg",
+    "twitterCard": "summary_large_image"
+  }
+} 
