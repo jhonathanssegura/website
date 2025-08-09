@@ -167,6 +167,13 @@
             }
         </style>
 
-        <!-- Portfolio functionality is handled by js/sections.js -->
+        <!-- Portfolio functionality is handled by js/sections.js and js/api-integration.js -->
+        <script>
+            // Initialize portfolio when section is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // The API integration will automatically load projects when the section is ready
+                console.log('Portfolio section ready for API integration');
+            });
+        </script>
     </section>
 </div>
