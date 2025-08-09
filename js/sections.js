@@ -31,27 +31,32 @@ function displayProjects() {
 }
 
 function showProjectDetails(projectId) {
-    const project = window.allProjects.find(p => p.id === projectId);
-    if (!project) return;
+    // Use API version if available, otherwise fallback to local data
+    if (window.showProjectDetailsAPI) {
+        showProjectDetailsAPI(projectId);
+    } else {
+        const project = window.allProjects.find(p => p.id === projectId);
+        if (!project) return;
 
-    const modal = document.getElementById('projectModal');
-    const content = document.getElementById('modalContent');
+        const modal = document.getElementById('projectModal');
+        const content = document.getElementById('modalContent');
 
-    content.innerHTML = `
-        <h2>${project.title}</h2>
-        <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin: 15px 0;">
-        <p><strong>Description:</strong> ${project.description}</p>
-        <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
-        ${project.features ? `<p><strong>Key Features:</strong></p><ul>${project.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
-        ${project.challenges ? `<p><strong>Technical Challenges:</strong> ${project.challenges}</p>` : ''}
-        ${project.learnings ? `<p><strong>Key Learnings:</strong> ${project.learnings}</p>` : ''}
-        <div class="project-links">
-            ${project.github ? `<a href="${project.github}" target="_blank" class="project-link btn-primary">View on GitHub</a>` : ''}
-            ${project.live ? `<a href="${project.live}" target="_blank" class="project-link btn-secondary">Live Demo</a>` : ''}
-        </div>
-    `;
+        content.innerHTML = `
+            <h2>${project.title}</h2>
+            <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin: 15px 0;">
+            <p><strong>Description:</strong> ${project.description}</p>
+            <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+            ${project.features ? `<p><strong>Key Features:</strong></p><ul>${project.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+            ${project.challenges ? `<p><strong>Technical Challenges:</strong> ${project.challenges}</p>` : ''}
+            ${project.learnings ? `<p><strong>Key Learnings:</strong> ${project.learnings}</p>` : ''}
+            <div class="project-links">
+                ${project.github ? `<a href="${project.github}" target="_blank" class="project-link btn-primary">View on GitHub</a>` : ''}
+                ${project.live ? `<a href="${project.live}" target="_blank" class="project-link btn-secondary">Live Demo</a>` : ''}
+            </div>
+        `;
 
-    modal.style.display = 'block';
+        modal.style.display = 'block';
+    }
 }
 
 function filterProjects(filter) {
@@ -139,63 +144,68 @@ function displayBlogArticles() {
 }
 
 async function showArticleDetails(articleId) {
-    const article = window.allArticles.find(a => a.id === articleId);
-    if (!article) return;
+    // Use API version if available, otherwise fallback to local data
+    if (window.showArticleDetailsAPI) {
+        showArticleDetailsAPI(articleId);
+    } else {
+        const article = window.allArticles.find(a => a.id === articleId);
+        if (!article) return;
 
-    const modal = document.getElementById('articleModal');
-    const content = document.getElementById('articleContent');
+        const modal = document.getElementById('articleModal');
+        const content = document.getElementById('articleContent');
 
-    // Show loading
-    content.innerHTML = '<div style="text-align: center; padding: 40px;">Loading article...</div>';
-    modal.style.display = 'block';
+        // Show loading
+        content.innerHTML = '<div style="text-align: center; padding: 40px;">Loading article...</div>';
+        modal.style.display = 'block';
 
-    try {
-        // Load markdown content
-        const response = await fetch(`data/blog/${article.contentFile}`);
-        const markdownContent = await response.text();
+        try {
+            // Load markdown content
+            const response = await fetch(`data/blog/${article.contentFile}`);
+            const markdownContent = await response.text();
 
-        // Load marked.js if not already loaded
-        if (typeof marked === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
-            document.head.appendChild(script);
-            
-            await new Promise((resolve) => {
-                script.onload = resolve;
-            });
-        }
+            // Load marked.js if not already loaded
+            if (typeof marked === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+                document.head.appendChild(script);
+                
+                await new Promise((resolve) => {
+                    script.onload = resolve;
+                });
+            }
 
-        // Render markdown
-        const htmlContent = marked.parse(markdownContent);
+            // Render markdown
+            const htmlContent = marked.parse(markdownContent);
 
-        content.innerHTML = `
-            <article>
-                <header style="margin-bottom: 30px;">
-                    <h1 style="color: #2c3e50; margin-bottom: 10px;">${article.title}</h1>
-                    <div style="display: flex; gap: 20px; color: #666; font-size: 14px; margin-bottom: 20px;">
-                        <span>📅 ${new Date(article.date).toLocaleDateString()}</span>
-                        <span>⏱️ ${article.readTime} min read</span>
-                        <span>👁️ ${article.views} views</span>
-                        <span>💬 ${article.comments} comments</span>
+            content.innerHTML = `
+                <article>
+                    <header style="margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; margin-bottom: 10px;">${article.title}</h1>
+                        <div style="display: flex; gap: 20px; color: #666; font-size: 14px; margin-bottom: 20px;">
+                            <span>📅 ${new Date(article.date).toLocaleDateString()}</span>
+                            <span>⏱️ ${article.readTime} min read</span>
+                            <span>👁️ ${article.views} views</span>
+                            <span>💬 ${article.comments} comments</span>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            ${article.tags.map(tag => `<span style="background: #e8f4fd; color: #3498db; padding: 4px 8px; border-radius: 12px; font-size: 12px;">${tag}</span>`).join('')}
+                        </div>
+                    </header>
+                    <div style="line-height: 1.8; color: #333;">
+                        ${htmlContent}
                     </div>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        ${article.tags.map(tag => `<span style="background: #e8f4fd; color: #3498db; padding: 4px 8px; border-radius: 12px; font-size: 12px;">${tag}</span>`).join('')}
-                    </div>
-                </header>
-                <div style="line-height: 1.8; color: #333;">
-                    ${htmlContent}
+                </article>
+            `;
+        } catch (error) {
+            console.error('Error loading article:', error);
+            content.innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <h3>Error loading article</h3>
+                    <p>Unable to load the article content. Please try again later.</p>
+                    <p>Error: ${error.message}</p>
                 </div>
-            </article>
-        `;
-    } catch (error) {
-        console.error('Error loading article:', error);
-        content.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: #666;">
-                <h3>Error loading article</h3>
-                <p>Unable to load the article content. Please try again later.</p>
-                <p>Error: ${error.message}</p>
-            </div>
-        `;
+            `;
+        }
     }
 }
 
